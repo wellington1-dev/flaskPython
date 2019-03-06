@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <title>Dojo Fruit Store Assignment</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                        <circle cx="12" cy="13" r="4"></circle>
+                    </svg>
+                    <strong>Stream X</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main role="main">
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Streaming Games</h1>
+                <p class="lead text-muted"></p>
+                <p>
+                    <a href="/new_game" class="btn btn-primary my-2">New Games</a>
+                    <a href="/blog" class="btn btn-secondary my-2">Blog News</a>
+                </p>
+            </div>
+        </section>
+
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <form action='/register' method='post'>
+
+                    <h4 class="mb-3" id='buy'>Welcome to Stream X-Games!</h4>
+
+                    <h4 class="mb-3" id='info'>Your Information</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">First name</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" value="">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Last name</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" value="">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email">Confirm password</label>
+                        <input type="password" class="form-control" id="c_password" name="c_password">
+                    </div>
+
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+                    <hr>
+                    <h4 class="mb-3" id='info'>Login</h4>
+                </form>
+                <form action="/login" method="POST">
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                </form>
+
+
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
